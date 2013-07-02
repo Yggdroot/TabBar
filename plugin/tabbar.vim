@@ -24,7 +24,7 @@
 if exists('Tb_loaded')
     finish
 else
-      let Tb_loaded= 1
+    let Tb_loaded= 1
 endif "%%
 
 
@@ -34,7 +34,7 @@ endif "%%
 " 5-9 = info ; 5 is the most important
 "  10 = Entry/Exit
 if !exists('g:Tb_DBG_LVL')
-      let g:Tb_DBG_LVL = 0
+    let g:Tb_DBG_LVL = 0
 endif" %%
 
 
@@ -47,71 +47,71 @@ endif" %%
 " 3 = log into g:Tb_DbgOutput
 "     global variable [This is the default]
 if !exists('g:Tb_DebugMode')
-      let g:Tb_DebugMode = 0
+    let g:Tb_DebugMode = 0
 endif" %%
 
 
 " Mappings and Commands
 " TabBar Keyboard Mappings ~~
 if ! hasmapto('1') || !hasmapto('<M-1>')
-      "gui bindings containing META key, are different from terminal bindings
-      if has('gui_running')
-            "NORMAL mode bindings for gvim
-            noremap <unique> <script> <M-1> :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
-            noremap <unique> <script> <M-2> :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
-            noremap <unique> <script> <M-3> :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
-            noremap <unique> <script> <M-4> :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
-            noremap <unique> <script> <M-5> :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
-            noremap <unique> <script> <M-6> :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
-            noremap <unique> <script> <M-7> :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
-            noremap <unique> <script> <M-8> :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
-            noremap <unique> <script> <M-9> :call <SID>Bf_SwitchTo( 9)<CR>:<BS>
-            noremap <unique> <script> <M-0> :call <SID>Bf_SwitchTo( 10)<CR>:<BS>
-            "INSERT mode bindings for gvim
-            inoremap <unique> <script> <M-1> <esc>:call <SID>Bf_SwitchTo( 1)<CR>:<BS>a
-            inoremap <unique> <script> <M-2> <esc>:call <SID>Bf_SwitchTo( 2)<CR>:<BS>a
-            inoremap <unique> <script> <M-3> <esc>:call <SID>Bf_SwitchTo( 3)<CR>:<BS>a
-            inoremap <unique> <script> <M-4> <esc>:call <SID>Bf_SwitchTo( 4)<CR>:<BS>a
-            inoremap <unique> <script> <M-5> <esc>:call <SID>Bf_SwitchTo( 5)<CR>:<BS>a
-            inoremap <unique> <script> <M-6> <esc>:call <SID>Bf_SwitchTo( 6)<CR>:<BS>a
-            inoremap <unique> <script> <M-7> <esc>:call <SID>Bf_SwitchTo( 7)<CR>:<BS>a
-            inoremap <unique> <script> <M-8> <esc>:call <SID>Bf_SwitchTo( 8)<CR>:<BS>a
-            inoremap <unique> <script> <M-9> <esc>:call <SID>Bf_SwitchTo( 9)<CR>:<BS>a
-            inoremap <unique> <script> <M-0> <esc>:call <SID>Bf_SwitchTo( 10)<CR>:<BS>a
-      else
-            "NORMAL mode bindings for vim( dos32 )
-            noremap <unique> <script> ± :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
-            noremap <unique> <script> ² :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
-            noremap <unique> <script> ³ :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
-            noremap <unique> <script> ´ :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
-            noremap <unique> <script> µ :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
-            noremap <unique> <script> ¶ :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
-            noremap <unique> <script> · :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
-            noremap <unique> <script> ¸ :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
-      "else
-            "NORMAL mode bindings for vim( terminal)
-            noremap <unique> <script> 1 :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
-            noremap <unique> <script> 2 :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
-            noremap <unique> <script> 3 :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
-            noremap <unique> <script> 4 :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
-            noremap <unique> <script> 5 :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
-            noremap <unique> <script> 6 :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
-            noremap <unique> <script> 7 :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
-            noremap <unique> <script> 8 :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
-            noremap <unique> <script> 9 :call <SID>Bf_SwitchTo( 9)<CR>:<BS>
-            noremap <unique> <script> 0 :call <SID>Bf_SwitchTo( 10)<CR>:<BS>
-            "INSERT mode bindings for vim( terminal)
-            inoremap <unique> <script> 1 <esc>:call <SID>Bf_SwitchTo( 1)<CR>:<BS>a
-            inoremap <unique> <script> 2 <esc>:call <SID>Bf_SwitchTo( 2)<CR>:<BS>a
-            inoremap <unique> <script> 3 <esc>:call <SID>Bf_SwitchTo( 3)<CR>:<BS>a
-            inoremap <unique> <script> 4 <esc>:call <SID>Bf_SwitchTo( 4)<CR>:<BS>a
-            inoremap <unique> <script> 5 <esc>:call <SID>Bf_SwitchTo( 5)<CR>:<BS>a
-            inoremap <unique> <script> 6 <esc>:call <SID>Bf_SwitchTo( 6)<CR>:<BS>a
-            inoremap <unique> <script> 7 <esc>:call <SID>Bf_SwitchTo( 7)<CR>:<BS>a
-            inoremap <unique> <script> 8 <esc>:call <SID>Bf_SwitchTo( 8)<CR>:<BS>a
-            inoremap <unique> <script> 9 <esc>:call <SID>Bf_SwitchTo( 9)<CR>:<BS>a
-            inoremap <unique> <script> 0 <esc>:call <SID>Bf_SwitchTo( 10)<CR>:<BS>a
-      endif
+    "gui bindings containing META key, are different from terminal bindings
+    if has('gui_running')
+        "NORMAL mode bindings for gvim
+        noremap <unique> <script> <M-1> :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
+        noremap <unique> <script> <M-2> :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
+        noremap <unique> <script> <M-3> :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
+        noremap <unique> <script> <M-4> :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
+        noremap <unique> <script> <M-5> :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
+        noremap <unique> <script> <M-6> :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
+        noremap <unique> <script> <M-7> :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
+        noremap <unique> <script> <M-8> :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
+        noremap <unique> <script> <M-9> :call <SID>Bf_SwitchTo( 9)<CR>:<BS>
+        noremap <unique> <script> <M-0> :call <SID>Bf_SwitchTo( 10)<CR>:<BS>
+        "INSERT mode bindings for gvim
+        inoremap <unique> <script> <M-1> <esc>:call <SID>Bf_SwitchTo( 1)<CR>:<BS>a
+        inoremap <unique> <script> <M-2> <esc>:call <SID>Bf_SwitchTo( 2)<CR>:<BS>a
+        inoremap <unique> <script> <M-3> <esc>:call <SID>Bf_SwitchTo( 3)<CR>:<BS>a
+        inoremap <unique> <script> <M-4> <esc>:call <SID>Bf_SwitchTo( 4)<CR>:<BS>a
+        inoremap <unique> <script> <M-5> <esc>:call <SID>Bf_SwitchTo( 5)<CR>:<BS>a
+        inoremap <unique> <script> <M-6> <esc>:call <SID>Bf_SwitchTo( 6)<CR>:<BS>a
+        inoremap <unique> <script> <M-7> <esc>:call <SID>Bf_SwitchTo( 7)<CR>:<BS>a
+        inoremap <unique> <script> <M-8> <esc>:call <SID>Bf_SwitchTo( 8)<CR>:<BS>a
+        inoremap <unique> <script> <M-9> <esc>:call <SID>Bf_SwitchTo( 9)<CR>:<BS>a
+        inoremap <unique> <script> <M-0> <esc>:call <SID>Bf_SwitchTo( 10)<CR>:<BS>a
+    else
+        "NORMAL mode bindings for vim( dos32 )
+        noremap <unique> <script> ± :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
+        noremap <unique> <script> ² :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
+        noremap <unique> <script> ³ :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
+        noremap <unique> <script> ´ :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
+        noremap <unique> <script> µ :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
+        noremap <unique> <script> ¶ :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
+        noremap <unique> <script> · :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
+        noremap <unique> <script> ¸ :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
+        "else
+        "NORMAL mode bindings for vim( terminal)
+        noremap <unique> <script> 1 :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
+        noremap <unique> <script> 2 :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
+        noremap <unique> <script> 3 :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
+        noremap <unique> <script> 4 :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
+        noremap <unique> <script> 5 :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
+        noremap <unique> <script> 6 :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
+        noremap <unique> <script> 7 :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
+        noremap <unique> <script> 8 :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
+        noremap <unique> <script> 9 :call <SID>Bf_SwitchTo( 9)<CR>:<BS>
+        noremap <unique> <script> 0 :call <SID>Bf_SwitchTo( 10)<CR>:<BS>
+        "INSERT mode bindings for vim( terminal)
+        inoremap <unique> <script> 1 <esc>:call <SID>Bf_SwitchTo( 1)<CR>:<BS>a
+        inoremap <unique> <script> 2 <esc>:call <SID>Bf_SwitchTo( 2)<CR>:<BS>a
+        inoremap <unique> <script> 3 <esc>:call <SID>Bf_SwitchTo( 3)<CR>:<BS>a
+        inoremap <unique> <script> 4 <esc>:call <SID>Bf_SwitchTo( 4)<CR>:<BS>a
+        inoremap <unique> <script> 5 <esc>:call <SID>Bf_SwitchTo( 5)<CR>:<BS>a
+        inoremap <unique> <script> 6 <esc>:call <SID>Bf_SwitchTo( 6)<CR>:<BS>a
+        inoremap <unique> <script> 7 <esc>:call <SID>Bf_SwitchTo( 7)<CR>:<BS>a
+        inoremap <unique> <script> 8 <esc>:call <SID>Bf_SwitchTo( 8)<CR>:<BS>a
+        inoremap <unique> <script> 9 <esc>:call <SID>Bf_SwitchTo( 9)<CR>:<BS>a
+        inoremap <unique> <script> 0 <esc>:call <SID>Bf_SwitchTo( 10)<CR>:<BS>a
+    endif
 endif " %%
 
 
@@ -125,26 +125,31 @@ noremap <unique> <script> <Plug>tbtoggle :call <SID>Tb_Toggle()<CR>:<BS>
 
 " TabBar commands ~~
 if !exists(':TbStart')
-      command! TbStart  call <SID>Tb_Start(1, -1)
+    command! TbStart  call <SID>Tb_Start(1, -1)
 endif
 
 if !exists(':TbStop')
-      command! TbStop  call <SID>Tb_Stop(1)
+    command! TbStop  call <SID>Tb_Stop(1)
 endif
 
 if !exists(':TbAup')
-      command! TbAup  call <SID>Tb_AutoUpdt(-1)
+    command! TbAup  call <SID>Tb_AutoUpdt(-1)
 endif
 
 if !exists(':TbToggle')
-      command! TbToggle  call <SID>Tb_Toggle()
+    command! TbToggle  call <SID>Tb_Toggle()
 endif
 
 if !exists(':Tbbn')
-      command! Tbbn call <SID>Bf_Cycle(1)
+    command! Tbbn call <SID>Bf_Cycle(1)
 endif
-if !exists(':Tbp')
-      command! Tbbp call <SID>Bf_Cycle(0)
+
+if !exists(':Tbbp')
+    command! Tbbp call <SID>Bf_Cycle(0)
+endif
+
+if !exists(':Tbbd')
+    command! Tbbd call <SID>Tb_DelCurBuf()
 endif " %%
 
 
@@ -154,14 +159,14 @@ endif " %%
 " We start out with this off for startup, but once vim is running we
 " turn this on.
 if !exists('g:Tb_AutoUpdt')
-      let g:Tb_AutoUpdt = 0
+    let g:Tb_AutoUpdt = 0
 endif " %%
 
 
 " MoreThanOne? ~~
 " Display Mini Buf Explorer when there are 'More Than One' eligible buffers
 if !exists('g:Tb_MoreThanOne')
-      let g:Tb_MoreThanOne = 2
+    let g:Tb_MoreThanOne = 2
 endif" %%
 
 
@@ -169,7 +174,7 @@ endif" %%
 " When opening a new -TabBar- window, split the new windows below or
 " above the current window?  1 = below, 0 = above.
 if !exists('g:Tb_SplitBelow')
-      let g:Tb_SplitBelow = &splitbelow
+    let g:Tb_SplitBelow = &splitbelow
 endif" %%
 
 
@@ -179,7 +184,7 @@ endif" %%
 " splitting logic will be run. If however you want a vertical split,
 " assign the width (in characters) you wish to assign to the -TabBar- window.
 if !exists('g:Tb_VSplit')
-      let g:Tb_VSplit = 0
+    let g:Tb_VSplit = 0
 endif" %%
 
 
@@ -200,7 +205,7 @@ endif" %%
 
 " if cTabSwitchBufs is turned on then we turn off cTabSwitchWindows.~~
 if g:Tb_cTabSwitchBufs == 1 || !exists('g:Tb_cTabSwitchWindows')
-      let g:Tb_cTabSwitchWindows = 0
+    let g:Tb_cTabSwitchWindows = 0
 endif" %%
 
 
@@ -222,13 +227,13 @@ endif "%%
 
 " Modifiable Select Target ~~
 if !exists('g:Tb_ModSelTarget')
-      let g:Tb_ModSelTarget = 0
+    let g:Tb_ModSelTarget = 0
 endif "%%
 
 
 " Force Syntax Enable ~~
 if !exists('g:Tb_ForceSyntaxEnable')
-      let g:Tb_ForceSyntaxEnable = 0
+    let g:Tb_ForceSyntaxEnable = 0
 endif "%%
 
 
@@ -237,7 +242,7 @@ endif "%%
 " single click switching of tabs. By default we use
 " double click for tab selection.
 if !exists('g:Tb_UseSingleClick')
-      let g:Tb_UseSingleClick = 0
+    let g:Tb_UseSingleClick = 0
 endif
 
 "
@@ -273,6 +278,7 @@ let s:maxTabWidth = 0
 " Debug line counter
 let s:DBG_LN_CNT = 0
 
+let s:bufNumDict = {}
 
 " Global used to store the buffer list so we don't update the ~~
 " UI unless the list has changed.
@@ -291,42 +297,185 @@ endif "%%
 
 " g:Tb_MaxHeight maxSize ~~
 if !exists('g:Tb_MaxSize')
-      let g:Tb_MaxSize = 1
-      "TODO implement Tb_MaxHeight
+    let g:Tb_MaxSize = 1
+    "TODO implement Tb_MaxHeight
 endif "%%
 
 
 " g:Tb_MaxHeight MinSize ~~
 if !exists('g:Tb_MinSize')
-      let g:Tb_MinSize = 1
-      "TODO implement Tb_MaxHeight
+    let g:Tb_MinSize = 1
+    "TODO implement Tb_MaxHeight
 endif "%%
 
 
 " g:Tb_DbgOutput: In debug mode 3 this variable will hold the debug output~~
 if !exists('g:Tb_DbgOutput')
-      let g:Tb_DbgOutput = ''
+    let g:Tb_DbgOutput = ''
 endif "%%
 
 
 " g:Tb_ForceDisplay ~~
 if !exists('g:Tb_ForceDisplay')
-      let g:Tb_ForceDisplay = 0
+    let g:Tb_ForceDisplay = 0
 endif "%%
 
+" g:Tb_ScrollMode ~~
+if !exists('g:Tb_ScrollMode')
+    let g:Tb_ScrollMode = 0
+endif "%%
 
 " Setup an autocommand group and some autocommands ~~
 " that keep our explorer updated automatically.
 augroup TabBar
-autocmd TabBar BufDelete   * call <SID>DEBUG('-=> BufDelete AutoCmd', 10) |call <SID>Tb_AutoUpdt(expand('<abuf>'))
-autocmd TabBar BufEnter    * call <SID>DEBUG('-=> BufEnter  AutoCmd', 10) |call <SID>Tb_AutoUpdt(-1)
-autocmd TabBar VimEnter    * call <SID>DEBUG('-=> VimEnter  AutoCmd', 10) |let g:Tb_AutoUpdt = 1 |call <SID>Tb_AutoUpdt(-1)
+autocmd TabBar BufDelete   * call <SID>DEBUG('-=> BufDelete AutoCmd', 10) |call <SID>Tb_AutoUpdt(-1)
+autocmd TabBar BufWinEnter,BufWritePost * call <SID>Tb_AutoUpdt(-1)
+autocmd TabBar VimEnter    * call <SID>DEBUG('-=> VimEnter  AutoCmd', 10) | let g:Tb_AutoUpdt = 1 | call <SID>Tb_AutoUpdt(-1)
+autocmd TabBar CursorMoved,CursorMovedI * if <SID>Tb_IsChanged() | call <SID>Tb_AutoUpdt(-1) | endif
+autocmd TabBar BufEnter * call <SID>Tb_Adjust()
+augroup END
 " %%
 
 
 "------------"
 " Functions  "
 "------------"
+function! <SID>Tb_Zoom()
+    if g:Tb_MinSize > 1 || bufname('%') != '-TabBar-'
+        return
+    endif
+
+    if !exists('s:ZoomIn')
+        let s:ZoomIn = 0
+    endif
+
+    let s:ZoomIn = !s:ZoomIn
+    if s:ZoomIn
+        setlocal wrap
+        setlocal linebreak
+        setlocal breakat=]+
+        exec 'resize '.(virtcol('$')+winwidth(0)-1)/winwidth(0)
+    else
+        setlocal nowrap
+        resize 1
+    endif
+endfunction
+
+function! <SID>Tb_IsChanged()
+    if !exists('b:BufChange')
+        let b:BufChange = 0
+    endif
+    let status = b:BufChange
+    let b:BufChange = &modified
+    return status != b:BufChange
+endfunction
+
+function! <SID>Tb_WarningDlg()
+    if &modified
+        let choice = confirm(expand('%:t') . " has been modified!", "&Save\n&Discard\n&Cancel", "Warning")
+        if choice == 1
+            w!
+        elseif choice == 2
+            return '!'
+        else
+            return 'n'
+        endif
+    endif
+    return ''
+endfunction
+
+function! <SID>Tb_DelCurBuf()
+    let choice = <SID>Tb_WarningDlg()
+    if choice == 'n'
+        return
+    endif
+
+    if &bl == 1
+        let i = bufnr('%') + 1
+        while i <= bufnr('$')
+            if buflisted(i)
+                break
+            endif
+            let i += 1
+        endwhile
+        if i > bufnr('$')
+            let i = 1
+            while i < bufnr('%')
+                if buflisted(i)
+                    break
+                endif
+                let i += 1
+            endwhile
+            if i == bufnr('%')
+                exec 'bw'.choice
+            else
+                setlocal bufhidden=wipe
+                exec 'bp'.choice
+            endif
+        else
+            setlocal bufhidden=wipe
+            exec 'bn'.choice
+        endif
+    endif
+endfun
+
+function! <SID>Tb_Scroll(curBuf)
+    if &wrap == 0 && has_key(s:bufNumDict, a:curBuf) && virtcol('$') > winwidth(0)
+        norm! g0
+        let lhs = virtcol('.')
+        let index = s:bufNumDict[a:curBuf]
+        let [line, lcol] = searchpos('\['.index.'[ :][^\]]*\]','nw')
+        let [line, rcol] = searchpos('\['.index.'[ :][^\]]*\][+]\=','nwe')
+
+        if s:lhs > lhs
+            exec 'norm! '.(s:lhs-lhs).'zl'
+        endif
+
+        let rEdge = s:lhs + winwidth(0) - 1
+        if rcol > rEdge
+            if g:Tb_ScrollMode == 0
+                exec 'norm! '.(rcol-rEdge).'zl'
+            elseif g:Tb_ScrollMode == 1
+                exec 'norm! '.(lcol+rcol-s:lhs-rEdge)/2.'zl'
+            elseif g:Tb_ScrollMode == 2
+                exec 'norm! '.(lcol-s:lhs).'zl'
+            endif
+        elseif lcol < s:lhs
+            if g:Tb_ScrollMode == 0
+                exec 'norm! '.(s:lhs-lcol).'zh'
+            elseif g:Tb_ScrollMode == 1
+                exec 'norm! '.(s:lhs+rEdge-lcol-rcol)/2.'zh'
+            elseif g:Tb_ScrollMode == 2
+                exec 'norm! '.(rEdge-rcol).'zh'
+            endif
+        endif
+
+        norm! g0
+        let lhs = virtcol('.')
+        let rEdge = lhs + winwidth(0) - 1
+        if virtcol('$') < rEdge
+            exec 'norm! '.(rEdge-virtcol('$')+1).'zh'
+        endif
+    endif
+endfunction
+
+function! <SID>Tb_Adjust()
+    let tbNr = bufwinnr('-TabBar-')
+    if tbNr == -1 || bufname('%') == '-TabBar-'
+        return
+    endif
+
+    let curBuf = bufnr('%')
+    exec tbNr . 'wincmd w'
+    norm! g0
+    let s:lhs = virtcol('.')
+    norm! g$
+    let s:rhs = virtcol('.')
+
+    call <SID>Tb_Scroll(curBuf)
+    wincmd p
+endfunction
+
 " Tb_Start - Sets up our explorer and causes it to be displayed ~~
 function! <SID>Tb_Start(sticky, delBufNum)
     if g:Tb_DBG_LVL > 0
@@ -346,7 +495,19 @@ function! <SID>Tb_Start(sticky, delBufNum)
     let &report    = 10000
     set noshowcmd
 
-    call <SID>Win_FindOrCreate('-TabBar-', -1, 1)
+    let s:lhs = 0
+    let s:rhs = 999999
+    let tbNr = bufwinnr('-TabBar-')
+    if tbNr != -1
+        exec tbNr . 'wincmd w'
+        norm! g0
+        let s:lhs = virtcol('.')
+        norm! g$
+        let s:rhs = virtcol('.')
+        wincmd p
+    endif
+
+    call <SID>Win_FindOrCreate('-TabBar-', 0, 1)
 
     " Make sure we are in our window
     if bufname('%') != '-TabBar-'
@@ -367,23 +528,12 @@ function! <SID>Tb_Start(sticky, delBufNum)
     " them off for the -TabBar- window
     setlocal foldcolumn=0
     setlocal nonumber
-
-    if has("syntax")
-        syn clear
-        syn match Tb_Normal             '\[[^\]]*\]'
-        syn match Tb_Changed            '\[[^\]]*\]+'
-        syn match Tb_VisibleNormal      '\[[^\]]*\]\*+\='
-        syn match Tb_VisibleChanged     '\[[^\]]*\]\*+'
-
-        if !exists("g:did_tabbar_syntax_inits")
-            let g:did_tabbar_syntax_inits = 1
-            highlight def link Tb_Normal         Comment
-            highlight def link Tb_Changed        String
-            highlight def link Tb_VisibleNormal  StatusLineNC
-            highlight def link Tb_VisibleChanged Special
-        endif
+    setlocal ignorecase
+    setlocal filetype=tabbar
+    setlocal winfixheight
+    if g:Tb_MinSize == 1
+        setlocal nowrap
     endif
-
 
     " If you press return in the -TabBar- then try
     " to open the selected buffer in the previous window.
@@ -404,19 +554,19 @@ function! <SID>Tb_Start(sticky, delBufNum)
     " to the previous window.
     nnoremap <buffer> p :wincmd p<CR>:<BS>
 
+    nnoremap <buffer><silent> x :call <SID>Tb_Zoom()<CR>
+    nnoremap <buffer> j gj
+    nnoremap <buffer> k gk
+
     " The following allows for quicker moving between buffer
     " names in the -TabBar- window it also saves the last-pattern
     " and restores it.
-    nnoremap <buffer> <TAB>   :call search('\[[0-9]*:[^\]]*\]')<CR>:<BS>
-    nnoremap <buffer> <S-TAB> :call search('\[[0-9]*:[^\]]*\]','b')<CR>:<BS>
+    nnoremap <buffer> <TAB>   :call search('\[[0-9]*[^\]]*\]')<CR>:<BS>
+    nnoremap <buffer> <S-TAB> :call search('\[[0-9]*[^\]]*\]','b')<CR>:<BS>
 
     call <SID>Bf_SafePrint(a:delBufNum)
 
-    if (l:curBuf != -1)
-        call search('\['.l:curBuf.':'.expand('#'.l:curBuf.':t').'\]')
-    else
-        call <SID>DEBUG('Tb_Start: No current buffer to search for',9)
-    endif
+    call <SID>Tb_Scroll(l:curBuf)
 
     let &report  = l:save_rep
     let &showcmd = l:save_sc
@@ -500,20 +650,24 @@ function! <SID>Tb_AutoUpdt(delBufNum)
         call <SID>DEBUG('ENTER: Tb_AutoUpdt( delBufNum='.a:delBufNum.') : bufnr(%)='.bufnr('%').' : bufname(%)=['.bufname('%') . ']',10)
     endif
 
-    if (g:Tb_UpdtMutex == 1)
+    if g:Tb_UpdtMutex == 1
         if g:Tb_DBG_LVL > 0
-              call <SID>DEBUG('Tb_AutoUpdt: recursion stopped',9)
-              call <SID>DEBUG('EXIT : Tb_AutoUpdt()'    ,10)
+            call <SID>DEBUG('Tb_AutoUpdt: recursion stopped',9)
+            call <SID>DEBUG('EXIT : Tb_AutoUpdt()'    ,10)
         endif
         return
     else
         let g:Tb_UpdtMutex = 1
     endif
 
+    if bufname('%') == '[Command Line]'
+        return
+    endif
+
     " Don't update the TabBar window
-    if (bufname('%') == '-TabBar-')
+    if bufname('%') == '-TabBar-'
         " If this is the only buffer left then toggle the buffer
-        if (winbufnr(2) == -1)
+        if winbufnr(2) == -1
             call <SID>Bf_Cycle(1)
             if g:Tb_DBG_LVL > 0
                 call <SID>DEBUG('Tb_AutoUpdt: does not run for cycled windows', 9)
@@ -532,29 +686,29 @@ function! <SID>Tb_AutoUpdt(delBufNum)
         return
     endif
 
-    if (a:delBufNum != -1)
+    if a:delBufNum != -1
         if g:Tb_DBG_LVL > 0
             call <SID>DEBUG('Tb_AutoUpdt: will make sure that buffer '.a:delBufNum.' is not included in the buffer list.', 5)
         endif
     endif
 
-  " Only allow updates when the Tb_AutoUpdt flag is set
-  " this allows us to stop updates on startup.
+    " Only allow updates when the Tb_AutoUpdt flag is set
+    " this allows us to stop updates on startup.
     if g:Tb_AutoUpdt == 1
         " Only show TabBar if we have a real buffer
-        if ((g:Tb_MoreThanOne == 0) || (bufnr('%') != -1 && bufname('%') != ""))
+        if (g:Tb_MoreThanOne == 0) || (bufnr('%') != -1 && bufname('%') != "")
             if <SID>Bf_Eligible(a:delBufNum) == 1
                 " if we don't have a window then create one
                 let l:bufnr = <SID>Win_Find('-TabBar-')
-                if (l:bufnr == -1)
-                        if g:Tb_DBG_LVL > 0
-                            call <SID>DEBUG('Tb_AutoUpdt: About to call Tb_Start (Create -TabBar-)', 9)
-                        endif
-                        call <SID>Tb_Start(0, a:delBufNum)
+                if l:bufnr == -1
+                    if g:Tb_DBG_LVL > 0
+                        call <SID>DEBUG('Tb_AutoUpdt: About to call Tb_Start (Create -TabBar-)', 9)
+                    endif
+                    call <SID>Tb_Start(0, a:delBufNum)
                 else
                     " otherwise only update the window if the contents have changed
                     let l:ListChanged = <SID>Bf_BuildList(a:delBufNum, 0)
-                    if (l:ListChanged)
+                    if l:ListChanged
                         if g:Tb_DBG_LVL > 0
                             call <SID>DEBUG('Tb_AutoUpdt: About to call Tb_Start (Update -TabBar-)', 9)
                         endif
@@ -563,7 +717,7 @@ function! <SID>Tb_AutoUpdt(delBufNum)
                 endif
 
                 " go back to the working buffer
-                if (bufname('%') == '-TabBar-')
+                if bufname('%') == '-TabBar-'
                     wincmd p
                 endif
             else
@@ -598,7 +752,7 @@ function! <SID>Tb_AutoUpdt(delBufNum)
         call <SID>DEBUG('EXIT : Tb_AutoUpdt()'     ,10)
     endif
 
-let g:Tb_UpdtMutex = 0
+    let g:Tb_UpdtMutex = 0
 endfunction " %%
 
 
@@ -649,28 +803,28 @@ endfunction " %%
 " isExplorer, 0 no, 1 yes
 " 0 no, 1 yes
 function! <SID>Win_FindOrCreate(bufName, forceEdge, isExplorer)
-  "if g:Tb_DBG_LVL > 0
-  "  call <SID>DEBUG('ENTER: Win_FindOrCreate('.a:bufName.')',10)
-  "endif
+    "if g:Tb_DBG_LVL > 0
+    "  call <SID>DEBUG('ENTER: Win_FindOrCreate('.a:bufName.')',10)
+    "endif
 
-  " Save the user's split setting.
-  let l:saveSplitBelow = &splitbelow
+    " Save the user's split setting.
+    let l:saveSplitBelow = &splitbelow
 
-  " Set to our new values.
-  let &splitbelow = g:Tb_SplitBelow
+    " Set to our new values.
+    let &splitbelow = g:Tb_SplitBelow
 
-  " Try to find an existing explorer window
-  let l:winNum = <SID>Win_Find(a:bufName)
+    " Try to find an existing explorer window
+    let l:winNum = <SID>Win_Find(a:bufName)
 
-  " If found goto the existing window, otherwise
-  " split open a new window.
-  if l:winNum != -1
-"    if g:Tb_DBG_LVL > 0
-"      call <SID>DEBUG('Found window ('.a:bufName.'): '.l:winNum,9)
-"    endif
-    exec l:winNum.' wincmd w'
-    let l:winFound = 1
-  else
+    " If found goto the existing window, otherwise
+    " split open a new window.
+    if l:winNum != -1
+        "    if g:Tb_DBG_LVL > 0
+        "      call <SID>DEBUG('Found window ('.a:bufName.'): '.l:winNum,9)
+        "    endif
+        exec l:winNum.' wincmd w'
+        let l:winFound = 1
+    else
 
         "if g:Tb_SplitToEdge == 1 || a:forceEdge >= 0
         if a:forceEdge >= 0
@@ -682,69 +836,69 @@ function! <SID>Win_FindOrCreate(bufName, forceEdge, isExplorer)
 
             if l:edge
                 if g:Tb_VSplit == 0
-                exec 'bo sp '.a:bufName
+                    exec 'bo sp '.a:bufName
                 else
-                exec 'bo vsp '.a:bufName
+                    exec 'bo vsp '.a:bufName
                 endif
             else
                 if g:Tb_VSplit == 0
-                exec 'to sp '.a:bufName
+                    exec 'to sp '.a:bufName
                 else
-                exec 'to vsp '.a:bufName
+                    exec 'to vsp '.a:bufName
                 endif
             endif
         else
             if g:Tb_VSplit == 0
-            exec 'sp '.a:bufName
+                exec 'sp '.a:bufName
             else
-            " &splitbelow doesn't affect vertical splits
-            " so we have to do this explicitly.. ugh.
-            if &splitbelow
-                exec 'rightb vsp '.a:bufName
-            else
-                exec 'vsp '.a:bufName
-            endif
+                " &splitbelow doesn't affect vertical splits
+                " so we have to do this explicitly.. ugh.
+                if &splitbelow
+                    exec 'rightb vsp '.a:bufName
+                else
+                    exec 'vsp '.a:bufName
+                endif
             endif
         endif
 
-    let g:Tb_ForceDisplay = 1
+        let g:Tb_ForceDisplay = 1
 
-    " Try to find an existing explorer window
-    let l:winNum = <SID>Win_Find(a:bufName)
-    if l:winNum != -1
-      "if g:Tb_DBG_LVL > 0
-      "  call <SID>DEBUG('Created and then found window ('.a:bufName.'): '.l:winNum,9)
-      "endif
-      exec l:winNum.' wincmd w'
-    else
-      "if g:Tb_DBG_LVL > 0
-      "  call <SID>DEBUG('Win_FindOrCreate failed to create window ('.a:bufName.').',1)
-      "endif
-      return
+        " Try to find an existing explorer window
+        let l:winNum = <SID>Win_Find(a:bufName)
+        if l:winNum != -1
+            "if g:Tb_DBG_LVL > 0
+            "  call <SID>DEBUG('Created and then found window ('.a:bufName.'): '.l:winNum,9)
+            "endif
+            exec l:winNum.' wincmd w'
+        else
+            "if g:Tb_DBG_LVL > 0
+            "  call <SID>DEBUG('Win_FindOrCreate failed to create window ('.a:bufName.').',1)
+            "endif
+            return
+        endif
+
+        if a:isExplorer
+            " Turn off the swapfile, set the buffer type so that it won't get written,
+            " and so that it will get deleted when it gets hidden and turn on word wrap.
+            setlocal noswapfile
+            setlocal buftype=nofile
+            setlocal bufhidden=delete
+            if g:Tb_VSplit == 0
+                setlocal wrap
+            else
+                setlocal nowrap
+                exec('setlocal winwidth='.g:Tb_MinSize)
+            endif
+        endif
+
+        "if g:Tb_DBG_LVL > 0
+        "  call <SID>DEBUG('Window ('.a:bufName.') created: '.winnr(),9)
+        "endif
+
     endif
 
-    if a:isExplorer
-      " Turn off the swapfile, set the buffer type so that it won't get written,
-      " and so that it will get deleted when it gets hidden and turn on word wrap.
-      setlocal noswapfile
-      setlocal buftype=nofile
-      setlocal bufhidden=delete
-      if g:Tb_VSplit == 0
-        setlocal wrap
-      else
-        setlocal nowrap
-        exec('setlocal winwidth='.g:Tb_MinSize)
-      endif
-    endif
-
-    "if g:Tb_DBG_LVL > 0
-    "  call <SID>DEBUG('Window ('.a:bufName.') created: '.winnr(),9)
-    "endif
-
-  endif
-
-  " Restore the user's split setting.
-  let &splitbelow = l:saveSplitBelow
+    " Restore the user's split setting.
+    let &splitbelow = l:saveSplitBelow
 
 endfunction " %%
 
@@ -758,78 +912,80 @@ function! <SID>Win_Resize()
         call <SID>DEBUG('ENTER: Win_Resize()',10)
     endif
 
-  " Make sure we are in our window
-  if bufname('%') != '-TabBar-'
-    call <SID>DEBUG('EXIT : Win_Resize called in invalid window',1)
-    return
-  endif
+    " Make sure we are in our window
+    if bufname('%') != '-TabBar-'
+        call <SID>DEBUG('EXIT : Win_Resize called in invalid window',1)
+        return
+    endif
 
-  let l:width  = winwidth('.')
+    let l:width  = winwidth('.')
 
-  " Horizontal Resize
-  if g:Tb_VSplit == 0
+    " Horizontal Resize
+    if g:Tb_VSplit == 0
 
-    if g:Tb_TabWrap == 0
-      let l:length = strlen(getline('.'))
-      let l:height = 0
-      if (l:width == 0)
-        let l:height = winheight('.')
-      else
-        let l:height = (l:length / l:width)
-        " handle truncation from div
-        if (l:length % l:width) != 0
-          let l:height = l:height + 1
+        if g:Tb_TabWrap == 0
+            let l:length = strlen(getline('.'))
+            let l:height = 0
+            if l:width == 0
+                let l:height = winheight('.')
+            else
+                let l:height = (l:length / l:width)
+                " handle truncation from div
+                if (l:length % l:width) != 0
+                    let l:height = l:height + 1
+                endif
+            endif
+        else
+            exec("setlocal textwidth=".l:width)
+            normal gg
+            normal gq}
+            normal G
+            let l:height = line('.')
+            normal gg
         endif
-      endif
-    else
-      exec("setlocal textwidth=".l:width)
-      normal gg
-      normal gq}
-      normal G
-      let l:height = line('.')
-      normal gg
-    endif
 
-    " enforce max window height
-    if g:Tb_MaxSize != 0
-      if g:Tb_MaxSize < l:height
-        let l:height = g:Tb_MaxSize
-      endif
-    endif
+        " enforce max window height
+        if g:Tb_MaxSize != 0
+            if g:Tb_MaxSize < l:height
+                let l:height = g:Tb_MaxSize
+            endif
+        endif
 
-    " enfore min window height
-    if l:height < g:Tb_MinSize || l:height == 0
-      let l:height = g:Tb_MinSize
-    endif
+        " enfore min window height
+        if l:height < g:Tb_MinSize || l:height == 0
+            let l:height = g:Tb_MinSize
+        endif
 
-    if g:Tb_DBG_LVL > 0
-        call <SID>DEBUG('EXIT : Win_Resize to '.l:height.' lines',9)
-    endif
-    exec('resize '.l:height)
-
-  " Vertical Resize
-  else
-
-    if g:Tb_MaxSize != 0
-      let l:newWidth = s:maxTabWidth
-      if l:newWidth > g:Tb_MaxSize
-          let l:newWidth = g:Tb_MaxSize
-      endif
-      if l:newWidth < g:Tb_MinSize
-          let l:newWidth = g:Tb_MinSize
-      endif
-    else
-      let l:newWidth = g:Tb_VSplit
-    endif
-
-    if l:width != l:newWidth
         if g:Tb_DBG_LVL > 0
-            call <SID>DEBUG('EXIT : Win_Resize to '.l:newWidth.' columns',9)
+            call <SID>DEBUG('EXIT : Win_Resize to '.l:height.' lines',9)
         endif
-      exec('vertical resize '.l:newWidth)
+        exec('resize '.l:height)
+
+        " Vertical Resize
+    else
+
+        if g:Tb_MaxSize != 0
+            let l:newWidth = s:maxTabWidth
+            if l:newWidth > g:Tb_MaxSize
+                let l:newWidth = g:Tb_MaxSize
+            endif
+            if l:newWidth < g:Tb_MinSize
+                let l:newWidth = g:Tb_MinSize
+            endif
+        else
+            let l:newWidth = g:Tb_VSplit
+        endif
+
+        if l:width != l:newWidth
+            if g:Tb_DBG_LVL > 0
+                call <SID>DEBUG('EXIT : Win_Resize to '.l:newWidth.' columns',9)
+            endif
+            exec('vertical resize '.l:newWidth)
+        endif
+
     endif
 
-  endif
+    let s:ZoomIn = 0
 
 endfunction " %%
 
@@ -1041,6 +1197,8 @@ function! <SID>Bf_SafePrint(delBufNum)
     " Prevent the buffer from being modified.
     setlocal nomodifiable
     set nobuflisted
+    let g:Tb_TotalBufNum = len(s:bufNumDict)
+    setlocal statusline=%<[%F]%=Total\ Bufs:%-3{g:Tb_TotalBufNum}
     if g:Tb_DBG_LVL > 0
         call <SID>DEBUG('EXIT : Bf_SafePrint()',10)
     endif
@@ -1058,7 +1216,7 @@ function! <SID>Bf_PrintList(delBufNum)
 
     let l:ListChanged = <SID>Bf_BuildList(a:delBufNum, 1)
 
-    if (l:ListChanged == 1 || g:Tb_ForceDisplay)
+    if l:ListChanged == 1 || g:Tb_ForceDisplay
         let l:save_rep = &report
         let l:save_sc = &showcmd
         let &report = 10000
@@ -1101,39 +1259,41 @@ function! <SID>Bf_BuildList(delBufNum, updateBufList)
     let l:fileNames = ''
     let l:maxTabWidth = 0
     call <SID>Map_Clear()
+    let s:bufNumDict = {}
 
     " Loop through every buffer less than the total number of buffers.
     while( l:i <= l:NBuffers)
-            let l:i = l:i + 1
+        let l:i = l:i + 1
 
         " If we have a delBufNum and it is the current
         " buffer then ignore the current buffer.
         " Otherwise, continue.
-        if (a:delBufNum == -1 || l:i != a:delBufNum)
+        if a:delBufNum == -1 || l:i != a:delBufNum
             " Make sure the buffer in question is listed.
-            if(getbufvar(l:i, '&buflisted') == 1)
+            if getbufvar(l:i, '&buflisted') == 1
                 " Get the name of the buffer.
                 let l:BufName = bufname(l:i)
                 " Check to see if the buffer is a blank or not. If the buffer does have
                 " a name, process it.
-                if(strlen(l:BufName))
+                if strlen(l:BufName)
                     " Only show modifiable buffers (The idea is that we don't
                     " want to show Explorers)
-                    if (getbufvar(l:i, '&modifiable') == 1 && BufName != '-TabBar-')
+                    if getbufvar(l:i, '&modifiable') == 1 && BufName != '-TabBar-'
                         " Get filename & Remove []'s & ()'s
                         let l:shortBufName = fnamemodify(l:BufName, ":t")
                         let l:shortBufName = substitute(l:shortBufName, '[][()]', '', 'g')
                         let l:y =l:y +1
+                        let s:bufNumDict[l:i] = l:y
                         let g:Tb_BufferMap=g:Tb_BufferMap . l:y . "-" . l:i . "\r"
-                        let l:tab = '['.l:y.':'.l:shortBufName." ]"
+                        let l:tab = '['.l:y.' '.l:shortBufName."]"
 
                         " If the buffer is open in a window mark it
                         if bufwinnr(l:i) != -1
-                            let l:tab = "[".l:y.':'.l:shortBufName."]*"
+                            let l:tab = "[".l:y.':'.l:shortBufName."]"
                         endif
 
                         " If the buffer is modified then mark it
-                        if(getbufvar(l:i, '&modified') == 1)
+                        if getbufvar(l:i, '&modified') == 1
                             let l:tab = l:tab . '+'
                         endif
                         let l:maxTabWidth = <SID>Tb_Max(strlen(l:tab), l:maxTabWidth)
@@ -1153,8 +1313,8 @@ function! <SID>Bf_BuildList(delBufNum, updateBufList)
         endif
     endwhile
 
-    if (g:Tb_VimBufList != l:fileNames)
-        if (a:updateBufList)
+    if g:Tb_VimBufList != l:fileNames
+        if a:updateBufList
             let g:Tb_VimBufList = l:fileNames
             let s:maxTabWidth = l:maxTabWidth
         endif
@@ -1181,51 +1341,51 @@ function! <SID>Bf_Eligible(delBufNum)
         call <SID>DEBUG('ENTER: Bf_Eligible()',10)
     endif
 
-  let l:save_rep = &report
-  let l:save_sc = &showcmd
-  let &report = 10000
-  set noshowcmd
+    let l:save_rep = &report
+    let l:save_sc = &showcmd
+    let &report = 10000
+    set noshowcmd
 
-  let l:NBuffers = bufnr('$')     " Get the number of the last buffer.
-  let l:i        = 0              " Set the buffer index to zero.
-  let l:found    = 0              " No buffer found
+    let l:NBuffers = bufnr('$')     " Get the number of the last buffer.
+    let l:i        = 0              " Set the buffer index to zero.
+    let l:found    = 0              " No buffer found
 
-  if (g:Tb_MoreThanOne > 1)
-    if g:Tb_DBG_LVL > 0
-        call <SID>DEBUG('Bf_Eligible : More Than One mode turned on',6)
-    endif
-  endif
-  let l:needed = g:Tb_MoreThanOne
-
-  " Loop through every buffer less than the total number of buffers.
-  while(l:i <= l:NBuffers && l:found < l:needed)
-    let l:i = l:i + 1
-
-    " If we have a delBufNum and it is the current
-    " buffer then ignore the current buffer.
-    " Otherwise, continue.
-    if (a:delBufNum == -1 || l:i != a:delBufNum)
-      " Make sure the buffer in question is listed.
-      if (getbufvar(l:i, '&buflisted') == 1)
-        " Get the name of the buffer.
-        let l:BufName = bufname(l:i)
-        " Check to see if the buffer is a blank or not. If the buffer does have
-        " a name, process it.
-        if (strlen(l:BufName))
-          " Only show modifiable buffers (The idea is that we don't
-          " want to show Explorers)
-          if ((getbufvar(l:i, '&modifiable') == 1) && (BufName != '-TabBar-'))
-
-              let l:found = l:found + 1
-
-          endif
+    if g:Tb_MoreThanOne > 1
+        if g:Tb_DBG_LVL > 0
+            call <SID>DEBUG('Bf_Eligible : More Than One mode turned on',6)
         endif
-      endif
     endif
-  endwhile
+    let l:needed = g:Tb_MoreThanOne
 
-  let &report  = l:save_rep
-  let &showcmd = l:save_sc
+    " Loop through every buffer less than the total number of buffers.
+    while(l:i <= l:NBuffers && l:found < l:needed)
+        let l:i = l:i + 1
+
+        " If we have a delBufNum and it is the current
+        " buffer then ignore the current buffer.
+        " Otherwise, continue.
+        if a:delBufNum == -1 || l:i != a:delBufNum
+            " Make sure the buffer in question is listed.
+            if getbufvar(l:i, '&buflisted') == 1
+                " Get the name of the buffer.
+                let l:BufName = bufname(l:i)
+                " Check to see if the buffer is a blank or not. If the buffer does have
+                " a name, process it.
+                if strlen(l:BufName)
+                    " Only show modifiable buffers (The idea is that we don't
+                    " want to show Explorers)
+                    if (getbufvar(l:i, '&modifiable') == 1) && (BufName != '-TabBar-')
+
+                        let l:found = l:found + 1
+
+                    endif
+                endif
+            endif
+        endif
+    endwhile
+
+    let &report  = l:save_rep
+    let &showcmd = l:save_sc
 
     if g:Tb_DBG_LVL > 0
         call <SID>DEBUG('EXIT : Bf_Eligible '.l:found.' eligible buffers of '.l:needed.' needed',6)
@@ -1250,59 +1410,59 @@ function! <SID>Bf_CrSel()
         call <SID>DEBUG('ENTER: Bf_CrSel()' ,10)
     endif
 
-  " Make sure we are in our window
-  if bufname('%') != '-TabBar-'
-    if g:Tb_DBG_LVL > 0
-        call <SID>DEBUG('EXIT : Bf_CrSel : called in invalid window',1)
-    endif
-    return
-  endif
-
-  let l:save_rep = &report
-  let l:save_sc  = &showcmd
-  let &report    = 10000
-  set noshowcmd
-
-  let l:bufnr  = <SID>Bf_Choosed()
-  let l:resize = 0
-
-  if(l:bufnr != -1)             " If the buffer exists.
-
-    let l:saveTb_AutoUpdt = g:Tb_AutoUpdt
-    let g:Tb_AutoUpdt = 0
-    " Switch to the previous window
-    wincmd p
-
-    " If we are in the buffer explorer or in a nonmodifiable buffer with
-    " g:Tb_ModSelTarget set then try another window (a few times)
-    if bufname('%') == '-TabBar-' || (g:Tb_ModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
-      wincmd w
-      if bufname('%') == '-TabBar-' || (g:Tb_ModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
-        wincmd w
-        if bufname('%') == '-TabBar-' || (g:Tb_ModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
-          wincmd w
-          " The following handles the case where -TabBar-
-          " is the only window left. We need to resize so we don't
-          " end up with a 1 or two line buffer.
-          if bufname('%') == '-TabBar-'
-            let l:resize = 1
-          endif
+    " Make sure we are in our window
+    if bufname('%') != '-TabBar-'
+        if g:Tb_DBG_LVL > 0
+            call <SID>DEBUG('EXIT : Bf_CrSel : called in invalid window',1)
         endif
-      endif
+        return
     endif
 
-    "exec('b! '.l:bufnr)
-    call <SID>Bf_SwitchTo( l:bufnr)
-    if (l:resize)
-      resize
+    let l:save_rep = &report
+    let l:save_sc  = &showcmd
+    let &report    = 10000
+    set noshowcmd
+
+    let l:bufnr  = <SID>Bf_Choosed()
+    let l:resize = 0
+
+    if l:bufnr != -1             " If the buffer exists.
+
+        let l:saveTb_AutoUpdt = g:Tb_AutoUpdt
+        let g:Tb_AutoUpdt = 0
+        " Switch to the previous window
+        wincmd p
+
+        " If we are in the buffer explorer or in a nonmodifiable buffer with
+        " g:Tb_ModSelTarget set then try another window (a few times)
+        if bufname('%') == '-TabBar-' || (g:Tb_ModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
+            wincmd w
+            if bufname('%') == '-TabBar-' || (g:Tb_ModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
+                wincmd w
+                if bufname('%') == '-TabBar-' || (g:Tb_ModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
+                    wincmd w
+                    " The following handles the case where -TabBar-
+                    " is the only window left. We need to resize so we don't
+                    " end up with a 1 or two line buffer.
+                    if bufname('%') == '-TabBar-'
+                        let l:resize = 1
+                    endif
+                endif
+            endif
+        endif
+
+        "exec('b! '.l:bufnr)
+        call <SID>Bf_SwitchTo( l:bufnr)
+        if l:resize
+            resize
+        endif
+        let g:Tb_AutoUpdt = l:saveTb_AutoUpdt
+        call <SID>Tb_AutoUpdt(-1)
+
     endif
-    let g:Tb_AutoUpdt = l:saveTb_AutoUpdt
-    call <SID>Tb_AutoUpdt(-1)
 
-  endif
-
-  let &report  = l:save_rep
-  let &showcmd = l:save_sc
+    let &report  = l:save_rep
+    let &showcmd = l:save_sc
 
     if g:Tb_DBG_LVL > 0
         call <SID>DEBUG('EXIT : Bf_CrSel()',10)
@@ -1315,7 +1475,7 @@ function! <SID>Bf_DblClkSel()
     if g:Tb_DBG_LVL > 0
         call <SID>DEBUG('ENTER: Bf_DblClkSel()',10)
     endif
-  call <SID>Bf_CrSel()
+    call <SID>Bf_CrSel()
     if g:Tb_DBG_LVL > 0
         call <SID>DEBUG('EXIT : Bf_DblClkSel()',10)
     endif
@@ -1334,14 +1494,14 @@ function! <SID>Bf_Cycle(forward)
     " The following hack handles the case where we only have one
     " window open and it is too small
     let l:saveTb_AutoUpdt = g:Tb_AutoUpdt
-    if (winbufnr(2) == -1)
+    if winbufnr(2) == -1
         resize
         let g:Tb_AutoUpdt = 0
     endif
 
     " Change buffer (keeping track of before and after buffers)
     let l:origBuf = bufnr('%')
-    if (a:forward == 1)
+    if a:forward == 1
         bn!
     else
         bp!
@@ -1352,7 +1512,7 @@ function! <SID>Bf_Cycle(forward)
     " This should stop us from stopping in any of the [Explorers]
     " FIXME: infite loop
     while getbufvar(l:curBuf, '&modifiable') == 0 && l:origBuf != l:curBuf
-        if (a:forward == 1)
+        if a:forward == 1
             bn!
         else
             bp!
@@ -1361,7 +1521,7 @@ function! <SID>Bf_Cycle(forward)
     endwhile
 
     let g:Tb_AutoUpdt = l:saveTb_AutoUpdt
-    if (l:saveTb_AutoUpdt == 1)
+    if l:saveTb_AutoUpdt == 1
         call <SID>Tb_AutoUpdt(-1)
     endif
 endfunction " %%
@@ -1431,11 +1591,11 @@ function! <SID>DEBUG(msg, level)
             " Return to original window
             exec l:prevPrevWin.' wincmd w'
             exec l:prevWin.' wincmd w'
-        " Debug output using VIM's echo facility
+            " Debug output using VIM's echo facility
         elseif g:Tb_DebugMode == 1
-        echo s:DBG_LN_CNT.':'.a:level.':'.a:msg
-        " Debug output to a file -- VERY SLOW!!!
-        " should be OK on UNIX and Win32 (not the 95/98 variants)
+            echo s:DBG_LN_CNT.':'.a:level.':'.a:msg
+            " Debug output to a file -- VERY SLOW!!!
+            " should be OK on UNIX and Win32 (not the 95/98 variants)
         elseif g:Tb_DebugMode == 2
             if has('system') || has('fork')
                 if has('win32') && !has('win95')
@@ -1470,9 +1630,9 @@ endfunc " %%
 "
 "
 "     let g:Tb_SplitBelow=0     " Put new window above current or on the  left
-                                " for vertical split
+" for vertical split
 "     let g:Tb_SplitBelow=1     " Put new window below current or on the  right
-                                " for vertical split
+" for vertical split
 "     By default we are now forcing the Tabbar window to open up at the edge of
 "     the screen.
 "     You can turn this off by setting the following variable in .vimrc:
@@ -1613,9 +1773,9 @@ endfunc " %%
 "
 "
 "   --  TabBar has a basic debugging capability.
-"       let g:Tb_DebugLevel = 0     " TabBar serious errors output
-"       let g:Tb_DebugLevel = 4     " TabBar all errors output
-"       let g:Tb_DebugLevel = 10    " TabBar reports everything
+"       let g:Tb_DBG_LVL = 0     " TabBar serious errors output
+"       let g:Tb_DBG_LVL = 4     " TabBar all errors output
+"       let g:Tb_DBG_LVL = 10    " TabBar reports everything
 "
 "   You can also set a DebugMode to cause output to be target as
 "   follows (default is mode 3):
