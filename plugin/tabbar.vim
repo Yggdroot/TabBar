@@ -80,14 +80,14 @@ if ! hasmapto('1') || !hasmapto('<M-1>')
         inoremap <unique> <script> <M-0> <esc>:call <SID>Bf_SwitchTo( 10)<CR>:<BS>a
     else
         "NORMAL mode bindings for vim( dos32 )
-        noremap <unique> <script> ± :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
-        noremap <unique> <script> ² :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
-        noremap <unique> <script> ³ :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
-        noremap <unique> <script> ´ :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
-        noremap <unique> <script> µ :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
-        noremap <unique> <script> ¶ :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
-        noremap <unique> <script> · :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
-        noremap <unique> <script> ¸ :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
+        noremap <unique> <script> ï¿½ :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
+        noremap <unique> <script> ï¿½ :call <SID>Bf_SwitchTo( 2)<CR>:<BS>
+        noremap <unique> <script> ï¿½ :call <SID>Bf_SwitchTo( 3)<CR>:<BS>
+        noremap <unique> <script> ï¿½ :call <SID>Bf_SwitchTo( 4)<CR>:<BS>
+        noremap <unique> <script> ï¿½ :call <SID>Bf_SwitchTo( 5)<CR>:<BS>
+        noremap <unique> <script> ï¿½ :call <SID>Bf_SwitchTo( 6)<CR>:<BS>
+        noremap <unique> <script> ï¿½ :call <SID>Bf_SwitchTo( 7)<CR>:<BS>
+        noremap <unique> <script> ï¿½ :call <SID>Bf_SwitchTo( 8)<CR>:<BS>
         "else
         "NORMAL mode bindings for vim( terminal)
         noremap <unique> <script> 1 :call <SID>Bf_SwitchTo( 1)<CR>:<BS>
@@ -528,7 +528,6 @@ function! <SID>Tb_Start(sticky, delBufNum)
     " them off for the -TabBar- window
     setlocal foldcolumn=0
     setlocal nonumber
-    setlocal ignorecase
     setlocal filetype=tabbar
     setlocal winfixheight
     if g:Tb_MinSize == 1
