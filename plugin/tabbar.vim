@@ -1223,13 +1223,13 @@ function! <SID>Bf_PrintList(delBufNum)
         set noshowcmd
 
         " Delete all lines in buffer.
-        1,$d _
+        silent! 1,$d _
 
         " Goto the end of the buffer put the buffer list
         " and then delete the extra trailing blank line
         $
         put! =g:Tb_VimBufList
-        $ d _
+        silent! $ d _
         let g:Tb_ForceDisplay = 0
 
         let &report  = l:save_rep
