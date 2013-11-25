@@ -461,7 +461,7 @@ endfunction
 
 function! <SID>Tb_Adjust()
     let tbNr = bufwinnr('-TabBar-')
-    if tbNr == -1 || bufname('%') == '-TabBar-'
+    if tbNr == -1 || bufname('%') == '-TabBar-' || !has_key(s:bufNumDict, bufnr('%'))
         return
     endif
 
