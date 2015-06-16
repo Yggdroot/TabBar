@@ -329,7 +329,7 @@ endif "%%
 " that keep our explorer updated automatically.
 augroup TabBar
 autocmd TabBar BufDelete   * call <SID>DEBUG('-=> BufDelete AutoCmd', 10) |call <SID>Tb_AutoUpdt(-1)
-autocmd TabBar BufWinEnter,BufWritePost * call <SID>Tb_AutoUpdt(-1)
+autocmd TabBar BufWinEnter,BufWritePost,BufWinLeave * call <SID>Tb_AutoUpdt(-1)
 autocmd TabBar VimEnter    * call <SID>DEBUG('-=> VimEnter  AutoCmd', 10) | let g:Tb_AutoUpdt = 1 | call <SID>Tb_AutoUpdt(-1)
 autocmd TabBar CursorMoved,CursorMovedI * if <SID>Tb_IsChanged() | call <SID>Tb_AutoUpdt(-1) | endif
 autocmd TabBar BufEnter * call <SID>Tb_Adjust()
@@ -528,6 +528,7 @@ function! <SID>Tb_Start(sticky, delBufNum)
     " them off for the -TabBar- window
     setlocal foldcolumn=0
     setlocal nonumber
+    setlocal norelativenumber
     setlocal filetype=tabbar
     setlocal winfixheight
     if g:Tb_MinSize == 1
@@ -1281,7 +1282,7 @@ function! <SID>Bf_BuildList(delBufNum, updateBufList)
                         " Get filename & Remove []'s & ()'s
                         let l:shortBufName = fnamemodify(l:BufName, ":t")
                         let l:shortBufName = substitute(l:shortBufName, '[][()]', '', 'g')
-                        let l:y =l:y +1
+                        let l:y = l:y + 1
                         let s:bufNumDict[l:i] = l:y
                         let g:Tb_BufferMap=g:Tb_BufferMap . l:y . "-" . l:i . "\r"
                         let l:tab = '['.l:y.' '.l:shortBufName."]"
